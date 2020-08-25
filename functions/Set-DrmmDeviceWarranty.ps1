@@ -29,13 +29,13 @@ function Set-DrmmDeviceWarranty {
 
 	# Declare Variables
 		$apiMethod = 'POST'
-		$Warranty = @{}
+		$WarrantyDate = @{}
 
 	# Add Wwrranty if provided
-	If ($PSBoundParameters.ContainsKey('warranty')) {$Warranty.Add('warranty',$warranty)}
+	If ($PSBoundParameters.ContainsKey('warranty')) {$WarrantyDate.Add('warrantyDate',$warranty)}
 
 	# Convert to JSON
-	$Body = $Warranty | ConvertTo-Json
+	$Body = $WarrantyDate | ConvertTo-Json
 
 	# Update Warranty
 	return New-ApiRequest -apiMethod $apiMethod -apiRequest "/v2/device/$deviceUid/warranty" -apiRequestBody $Body
